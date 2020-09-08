@@ -1,0 +1,19 @@
+*memo.txt*	Take note with timestamp.
+
+DESCRIPTION 	*memo-description*
+
+This plugin provides feature to create note with timestamp.
+
+USAGE	*memo-usage*
+
+Following command will be crated:
+>
+    :Memo <memo_name>
+<
+If you execute this command, following file will be created.
+
+`~/Documents/Memo/YYYYMMDDHHMMSS_NAME_OF_MEMO.md`
+
+If you want to change folder to store memo, please set `g:memo_dir` variable in your `_vimrc`.
+
+vim:tw=78:ts=8:noet:ft=help:norl:
