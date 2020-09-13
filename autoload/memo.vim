@@ -18,7 +18,7 @@ endfunction
 
 function! OpenMemo(...)
 	if !exists('g:memo_dir')
-		let g:memo_dir = '~/Documents/Memo/'
+		let g:memo_dir = $HOME . '/Documents/Memo/'
 	endif
 	let l:suffix = ''
 	for n in a:000
@@ -28,6 +28,9 @@ function! OpenMemo(...)
 		let l:filename = GenFilenameWithTimestamp(g:memo_dir, l:suffix)
 	else
 		let l:filename = g:memo_dir
+	endif
+	if !isdirectory(g:memo_dir)
+		call mkdir(g:memo_dir, "p")
 	endif
 	execute 'edit ' . l:filename
 endfunction
