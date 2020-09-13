@@ -3,6 +3,10 @@ if exists('g:loaded_memo_auto')
 endif
 let g:loaded_memo_auto = 1
 
+" Save user-configuration.
+let s:cpo_save = &cpo
+set cpo&vim
+
 function! GenFilenameWithTimestamp(dir, suffix)
 	if a:dir[-1:] !~ "[\\\/]"
 		let a:dir = a:dir . '/'
@@ -35,3 +39,7 @@ function! memo#OpenMarkdown(...)
 		call OpenMemo()
 	endif
 endfunction
+
+" Restore user-configuration.
+let &cpo = s:cpo_save
+unlet s:cpo_save
