@@ -43,6 +43,10 @@ function! memo#OpenMarkdown(...)
 	endif
 endfunction
 
+function! memo#SearchMemo(regex)
+	execute 'vimgrep ' . a:regex . ' ' . g:memo_dir . '/**'
+endfunction
+
 " Restore user-configuration.
 let &cpo = s:cpo_save
 unlet s:cpo_save
