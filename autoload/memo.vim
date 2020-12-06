@@ -6,6 +6,9 @@ let g:loaded_memo_auto = 1
 " Save user-configuration.
 let s:cpo_save = &cpo
 set cpo&vim
+if !exists('g:memo_dir')
+	let g:memo_dir = $HOME . '/Documents/Memo/'
+endif
 
 function! GenFilenameWithTimestamp(dir, suffix)
 	if a:dir[-1:] !~ "[\\\/]"
@@ -17,9 +20,6 @@ function! GenFilenameWithTimestamp(dir, suffix)
 endfunction
 
 function! OpenMemo(...)
-	if !exists('g:memo_dir')
-		let g:memo_dir = $HOME . '/Documents/Memo/'
-	endif
 	let l:suffix = ''
 	for n in a:000
 		let l:suffix = l:suffix . n
