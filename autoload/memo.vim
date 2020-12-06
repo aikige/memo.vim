@@ -6,6 +6,8 @@ let g:loaded_memo_auto = 1
 " Save user-configuration.
 let s:cpo_save = &cpo
 set cpo&vim
+
+" Set memo directory.
 if !exists('g:memo_dir')
 	let g:memo_dir = $HOME . '/Documents/Memo/'
 endif
