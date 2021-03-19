@@ -12,7 +12,7 @@ if !exists('g:memo_dir')
 	let g:memo_dir = $HOME . '/Documents/Memo/'
 endif
 
-function! GenFilenameWithTimestamp(dir, suffix)
+function! s:get_filename_with_timestamp(dir, suffix)
 	if a:dir[-1:] !~ "[\\\/]"
 		let a:dir = a:dir . '/'
 	endif
@@ -21,13 +21,15 @@ function! GenFilenameWithTimestamp(dir, suffix)
 	return l:filename
 endfunction
 
-function! OpenMemo(...)
+function! s:open_memo(...)
 	let l:suffix = ''
 	for n in a:000
 		let l:suffix = l:suffix . n
 	endfor
+	let l:title = substitute(l:suffix, '\.[a-z]*$', '', 'e')
+	let l:title = substitute(l:title, '_', ' ', 'g')
 	if a:0 > 0
-		let l:filename = GenFilenameWithTimestamp(g:memo_dir, l:suffix)
+		let l:filename = s:get_filename_with_timestamp(g:memo_dir, l:suffix)
 	else
 		let l:filename = g:memo_dir
 	endif
@@ -35,13 +37,14 @@ function! OpenMemo(...)
 		call mkdir(g:memo_dir, "p")
 	endif
 	execute 'edit ' . l:filename
+	call setline(".", "# " . l:title)
 endfunction
 
 function! memo#OpenMarkdown(...)
 	if a:0 > 0
-		call OpenMemo(a:1, ".md")
+		call s:open_memo(a:1, ".md")
 	else
-		call OpenMemo()
+		call s:open_memo()
 	endif
 endfunction
 
