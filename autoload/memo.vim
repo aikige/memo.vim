@@ -26,9 +26,10 @@ function! memo#OpenMarkdown(...)
 		call mkdir(g:memo_dir, "p")
 	endif
 	if a:0 > 0
-		let l:filename = substitute(a:1 . ".md", ' ', '_', 'g')
+		let l:filename = substitute(a:1 . '.md', ' ', '_', 'g')
 		let l:filename = s:get_filename_with_timestamp(g:memo_dir, l:filename)
-		let l:title = strftime("# %Y/%m/%d ") . a:1
+		let l:title = substitute(a:1, '_', ' ', 'g')
+		let l:title = strftime("# %Y/%m/%d ") . l:title
 		execute 'edit ' . l:filename
 		call setline(".", l:title)
 	else
