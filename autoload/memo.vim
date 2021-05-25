@@ -30,7 +30,12 @@ function! memo#OpenMarkdown(...)
 		let l:filename = s:get_filename_with_timestamp(g:memo_dir, l:filename)
 		let l:title = substitute(a:1, '_', ' ', 'g')
 		let l:title = strftime("# %Y/%m/%d ") . l:title
-		execute 'edit ' . l:filename
+		try
+			execute 'edit ' . l:filename
+		catch
+			echo 'Failed to open file: ' .. v:exception
+			return
+		endtry
 		call setline(".", l:title)
 	else
 		execute 'edit ' . g:memo_dir
