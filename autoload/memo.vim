@@ -46,6 +46,13 @@ function! memo#SearchMemo(regex)
 	execute 'vimgrep ' . a:regex . ' ' . g:memo_dir . '/**'
 endfunction
 
+function! memo#SearchAndOpenMemoByName(name, index = 0)
+	let l:pattern = '*' . a:name . '*.md'
+	let l:file_list = globpath(g:memo_dir, l:pattern)
+	let l:files = split(l:file_list)
+	execute 'edit ' . l:files[a:index]
+endfunction
+
 " Restore user-configuration.
 let &cpo = s:cpo_save
 unlet s:cpo_save

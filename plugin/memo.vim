@@ -9,6 +9,7 @@ set cpo&vim
 
 command! -nargs=? Memo call memo#OpenMarkdown(<f-args>)
 command! -nargs=1 MSearch call memo#SearchMemo(<f-args>)
+command! -nargs=+ MOpen call memo#SearchAndOpenMemoByName(<f-args>)
 
 " Restore user-configuration.
 let &cpo = s:cpo_save
