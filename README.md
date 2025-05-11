@@ -32,3 +32,13 @@ If you want to change folder to store memo, please set `g:memo_dir` variable in 
 ```
 
 Search memo directory using grep and show found file.
+
+### MOpen
+
+```
+:MOpen STRING INDEX
+```
+[globpath]:https://vimhelp.org/builtin.txt.html#globpath%28%29
+This command searches the memo folder using [globpath] function and finds a memo that includes the _STRING_ in the filename.
+When multiple files are found, the _INDEX_ is used to specify the file.
+If _INDEX_ is not specified, default value _0_ is used as the index.
