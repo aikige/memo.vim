@@ -16,14 +16,19 @@ Following command will be available.
 ### Memo
 
 ```
-:Memo NAME_OF_MEMO
+:Memo Name of Memo
 ```
 
 If you execute this command, following file will be created.
 
-`~/Documents/Memo/YYYYMMDDHHMMSS_NAME_OF_MEMO.md`
+```
+~/Documents/Memo/YYYYMMDDHHMMSS_Name_of_Memo.md
+```
 
-If you want to change folder to store memo, please set `g:memo_dir` variable in your `_vimrc`.
+Here, the timestamp is automatically added, and white spaces are replaced with the underscore.
+
+[vimrc]:https://vimhelp.org/starting.txt.html#vimrc
+If you want to change folder to store memo, please set `g:memo_dir` variable in your [vimrc].
 
 ### MSearch
 
@@ -31,7 +36,8 @@ If you want to change folder to store memo, please set `g:memo_dir` variable in 
 :MSearch REGEX
 ```
 
-Search memo directory using grep and show found file.
+[vimgrep]:https://vimhelp.org/quickfix.txt.html#%3Avimgrep
+Search memo directory using [vimgrep] and show found file.
 
 ### MOpen
 
