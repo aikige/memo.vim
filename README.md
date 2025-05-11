@@ -8,8 +8,9 @@ Following command will be available.
 
 |Command|Summary|
 |:------|:------|
-|Memo   |Create a new memo.|
-|MSearch|Search memos using grep and open matched item.|
+|`Memo`|Create a new memo.|
+|`MSearch`|Search memos using grep and open matched item.|
+|`MOpen`|Search and open a memo using part of its filename.|
 
 ## Command Details
 
